@@ -1,0 +1,2 @@
+set FLASK_APP=cww
+set FLASK_DEBUG=1
