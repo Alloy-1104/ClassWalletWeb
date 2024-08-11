@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>認証 - Class Wallet Web</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/verify.css') }}">
+{% endblock%}
+
+{% block content %}
+<h1>認証</h1>
+
+<h2>新規登録</h2>
+<form action="" method="post">
+  <label for="email-input">メールアドレス</label>
+  <input type="email" name="email" id="email-input">
+  <label for="password-input">パスワード</label>
+  <input type="password" name="password" id="password-input">
+  <label for="user_name-input">ユーザー名</label>
+  <input type="text" name="user_name" id="user_name-input">
+  <input type="submit" name="submit" value="register">
+</form>
+
+<h2>ログイン</h2>
+<form action="" method="post">
+  <label for="email-input">メールアドレス</label>
+  <input type="email" name="email" id="email-input">
+  <label for="password-input">パスワード</label>
+  <input type="password" name="password" id="password-input">
+  <input type="submit" name="submit" value="login">
+</form>
+{% endblock %}

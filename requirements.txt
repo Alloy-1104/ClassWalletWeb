@@ -1,7 +1,6 @@
 blinker==1.8.2
 click==8.1.7
 colorama==0.4.6
--e git+https://github.com/Alloy-1104/ClassWalletWeb.git@81a9e9a495059922f5816a5787896896ac224b70#egg=cww
 Flask==3.0.3
 Flask-SQLAlchemy==3.1.1
 greenlet==3.0.3

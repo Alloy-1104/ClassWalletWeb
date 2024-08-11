@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    index
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block head %}
+<title>トップ - Class Wallet Web</title>
+{% endblock%}
+
+{% block content %}
+<h1>トップ</h1>
+<p>ユーザー名 : {{ user_name }}</p>
+<p>メールアドレス : {{ email }}</p>
+<a href="/logout" role="button">ログアウト</a>
+{% endblock %}
