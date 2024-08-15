@@ -8,5 +8,8 @@
 <h1>トップ</h1>
 <p>ユーザー名 : {{ user_name }}</p>
 <p>メールアドレス : {{ email }}</p>
+{% if email == "crafter.alloy@gmail.com" %}
+<a href="/browse_db" role="button">データベースの閲覧</a>
+{% endif %}
 <a href="/logout" role="button">ログアウト</a>
 {% endblock %}

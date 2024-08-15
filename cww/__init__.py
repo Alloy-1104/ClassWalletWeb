@@ -5,8 +5,10 @@ from flask_migrate import Migrate
 from flask_login import LoginManager, login_user, login_required, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
+from cww.modules import gen_hash_id
+from cww.modules import fetch_user_session
 
-from cww.models import db, User, Wallet, Part
+from cww.models import db, User, Wallet, Part, UserAffiliation
 
 base_dir = os.path.dirname(__file__)
 app = Flask(__name__)
@@ -49,6 +51,7 @@ def verify():
             db.session.add(user)
             db.session.commit()
             login_user(user)
+            fetch_user_session(user)
             return redirect("/")
         elif mode == "login":
             email = request.form.get("email")
@@ -59,9 +62,7 @@ def verify():
                 return redirect(url_for("verify"))
             flash("ログインしました")
             login_user(user)
-            print(user.user_name)
-            session["user_name"] = user.user_name
-            session["email"] = user.email
+            fetch_user_session(user)
             return redirect("/")
 
 @app.route("/logout")
@@ -69,6 +70,22 @@ def verify():
 def logout():
     logout_user()
     return redirect(url_for("verify"))
+
+@app.route("/browse_db")
+@login_required
+def browse_db():
+    if session["email"] == "crafter.alloy@gmail.com":
+        db_data = {
+            "users": User.query.all(),
+            "wallets": Wallet.query.all(),
+            "parts": Part.query.all(),
+            "affiliations": UserAffiliation.query.all(),
+        }
+        return render_template("browse_db.html", **db_data)
+    else:
+        return redirect("/")
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

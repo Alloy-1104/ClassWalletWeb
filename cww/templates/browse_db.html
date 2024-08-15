@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DataBase</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    table >*>*>* {
+      padding: 4px 12px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="/" role="button">戻る</a>
+  <h2>User</h2>
+  <table border="1">
+    <tbody>
+      <tr>
+        <th>email</th>
+        <th>user_name</th>
+        <th>authorized_name</th>
+        <th>password_hash</th>
+      </tr>
+      {% for user in users %}
+      <tr>
+        <td>{{ user.email }}</td>
+        <td>{{ user.user_name }}</td>
+        <td>{{ user.authorized_name }}</td>
+        <td>{{ user.password_hash }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <h2>Wallet</h2>
+  <table border="1">
+    <tbody>
+      <tr>
+        <th>id</th>
+        <th>wallet_name</th>
+      </tr>
+      {% for wallet in wallets %}
+      <tr>
+        <td>{{ wallet.id }}</td>
+        <td>{{ wallet.wallet_name }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <h2>Part</h2>
+  <table border="1">
+    <tbody>
+      <tr>
+        <th>id</th>
+        <th>part_name</th>
+        <th>parent_wallet_id</th>
+      </tr>
+      {% for part in parts %}
+      <tr>
+        <td>{{ part.id }}</td>
+        <td>{{ part.part_name }}</td>
+        <td>{{ part.parent_wallet_id }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <h2>UserAffiliation</h2>
+  <table border="1">
+    <tbody>
+      <tr>
+        <th>id</th>
+        <th>user_email</th>
+        <th>part_id</th>
+      </tr>
+      {% for affiliation in affiliations %}
+      <tr>
+        <td>{{ affiliation.id }}</td>
+        <td>{{ affiliation.user_email }}</td>
+        <td>{{ affiliation.part_id }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</body>
+
+</html>
